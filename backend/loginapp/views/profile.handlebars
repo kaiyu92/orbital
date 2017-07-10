@@ -1,19 +1,27 @@
 <h2 class="page-header">Profile</h2>
 
-<table style="width:100%">
+<table class = "table table-hover">
   <tr>
-    <th>Event</th>
-    <th>Date</th> 
+    <th height = "35">Event</th>
+    <th width = "20%" height = "35">Date</th> 
     <th>Venue</th>
     <th>Category</th>
+    <th>Mark </th>
   </tr>
 
   {{#each data}}
   <tr>
-  	<td>{{Title}}</td>
-  	<td>{{Date}}</td>
-  	<td>{{Venue}}</td>
-  	<td>{{Category}}</td>
+    <td>{{Title}}</td>
+    <td>{{Date}}</td>
+    <td>{{Venue}}</td>
+    <td>{{Category}}</td>
+    <td>
+      <form action="/profile/markEvent" method="post">
+        <input type="hidden" name="event_id" value="{{Event_id}}"/>
+        <input type="submit" value="Mark" id="submit"/>
+       <a href="/get">read</a> <p></p>
+      </form>
+    </td>
   </tr>
   {{/each}}
 </table>

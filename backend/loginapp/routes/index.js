@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/loginapp');
 var Schema = mongoose.Schema;
 
+var Event = require('../models/Event'); //database
+
 // Get Homepage
 router.get('/', ensureAuthenticated, function(req, res){
 	res.render('index');
@@ -47,6 +49,17 @@ router.post('/new', function(req, res, next) {
   data.save();
 
   res.redirect('/');
+});
+
+//Insert new marked event
+router.post('/profile/markEvent', function(req, res, next) {
+
+  var markedEvent = new Event();
+  markedEvent.event_id = req.body.event_id;
+  markedEvent.username = req.user.username;
+
+  markedEvent.save();
+  res.redirect('/profile');
 });
 
 

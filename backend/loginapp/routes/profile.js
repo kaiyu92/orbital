@@ -15,6 +15,7 @@ router.get('/', isLoggedIn, function(req, res){
 	res.render('profile', { data: event_data });
 });
 
+
 function isLoggedIn(req, res, next){
 	if (req.isAuthenticated())
 		return next();
